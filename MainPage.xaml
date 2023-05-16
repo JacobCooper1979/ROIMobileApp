@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ROIMobileApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="Brand Pattern 1.png"
+                SemanticProperties.Description="background"
+                Aspect="AspectFill"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill" />
+
+            <Image
+                Source="ROI Logo.png"
+                SemanticProperties.Description="ROi logo"
+                HorizontalOptions="End" VerticalOptions="Start" 
+                Margin="0, 20, 20, 0" WidthRequest="50" HeightRequest="50" />
+
+            <Label
+                Text="Welcome to ROI application. Please select an option"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="End"
+                VerticalOptions="Start"/>
+
+
+
+            <Button
+                x:Name="Home"
+                Text="Home"
+                SemanticProperties.Hint="This is the home button and when clicked will navigate back to the home buttom"
+                
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                BackgroundColor="Red"  />
+
+            <Button
+                x:Name="View Details"
+                Text="View Employees Details"
+                SemanticProperties.Hint="naviagtes to the view employees page"
+                
+                HorizontalOptions="Center"
+                BackgroundColor="Red" />
+
+            <Button
+                x:Name="Update Details"
+                Text="Update Employee Details"
+                SemanticProperties.Hint="navigates to the update page"
+                
+                HorizontalOptions="Center"
+                BackgroundColor="Red" />
+
+            <Button
+                x:Name="Delete details"
+                Text="Delete Employee Details"
+                SemanticProperties.Hint="navigates to the delete page"
+                
+                HorizontalOptions="Center"
+                BackgroundColor="Red" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
