@@ -10,14 +10,14 @@
             VerticalOptions="Center">
 
             <Image
-                Source="Brand Pattern 1.png"
+                Source="Brand_Pattern_1.png"
                 SemanticProperties.Description="background"
                 Aspect="AspectFill"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill" />
 
             <Image
-                Source="ROI Logo.png"
+                Source="ROI_Logo.png"
                 SemanticProperties.Description="ROi logo"
                 HorizontalOptions="End" VerticalOptions="Start" 
                 Margin="0, 20, 20, 0" WidthRequest="50" HeightRequest="50" />
