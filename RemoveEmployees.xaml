@@ -5,7 +5,7 @@
     <Grid>
         <!-- Background image -->
         <Image
-            Source="brand_pattern_1.png"
+            Source="black_texture_image.png"
             Aspect="AspectFill"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" />
@@ -41,13 +41,34 @@
 
             <!-- Welcome label -->
             <Label
-                Text="Employee Remove Page"
+                Text="Please enter the Employees ID you want to Remove"
                 FontSize="30"
                 BackgroundColor= "#941a1d"
                 TextColor="Black"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center" />
+
+
+            <!-- Users txt for employee ID -->
+            <Entry
+                x:Name="TextInput"
+                Placeholder="Employees ID: "
+                Margin="20"
+                FontSize="20" />
+
+
+            <!--Delete button-->
+            <Button
+                    x:Name="DeleteButton"
+                    Text="Delete Button"
+                    AutomationProperties.HelpText="Deletes the employee"
+                    BackgroundColor= "#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"/>
+            
 
 
 
