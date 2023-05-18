@@ -63,7 +63,10 @@
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
-                    HeightRequest="100"/>
+                    HeightRequest="100"
+                    Clicked="OnViewEmployeesClicked"/>
+                <!-- Add Clicked event handler -->
+
 
                 <!-- Update Employees button -->
                 <Button
@@ -81,15 +84,18 @@
 
                 <!-- Delete Button -->
                 <Button
-                    x:Name="DeleteButton"
-                    Text="Delete Button"
+                    x:Name="RemoveEmployee"
+                    Text="Remove Employee"
                     AutomationProperties.HelpText="Navigates you to the delete page"
                     BackgroundColor="Red"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
-                    HeightRequest="100"/>
+                    HeightRequest="100"
+                    Clicked="OnRemoveEmployeesClicked"/>
+                <!-- Add Clicked event handler -->
+
 
             </StackLayout>
 

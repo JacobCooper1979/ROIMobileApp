@@ -28,11 +28,13 @@ namespace ROI_app
             await Navigation.PushAsync(new RemoveEmployees());
         }
 
+
         //View Employees
         private async void OnViewEmployeesClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ViewEmployees());
         }
+
 
     }
 }
