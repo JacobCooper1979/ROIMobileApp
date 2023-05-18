@@ -19,7 +19,7 @@
                     x:Name="Home"
                     Text="HOME"
                     AutomationProperties.HelpText="Navigates back to the home button"
-                    BackgroundColor= "#941a1d"
+                    BackgroundColor="#941a1d"
                     TextColor="Black"
                     HeightRequest="110"
                     WidthRequest="150"
@@ -43,14 +43,85 @@
             <Label
                 Text="Employee View Page"
                 FontSize="30"
-                BackgroundColor= "#941a1d"
+                BackgroundColor="#941a1d"
                 TextColor="Black"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center" />
 
-            
-            
+            <!-- Table-like layout for employees -->
+            <Grid Margin="20" BackgroundColor="#941a1d">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Table headers -->
+                <Label Text="Image" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="7" BackgroundColor="Black" />
+                <Label Text="ID" Grid.Row="0" Grid.Column="2" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <BoxView Grid.Row="0" Grid.Column="3" Grid.RowSpan="7" BackgroundColor="Black" />
+                <Label Text="FirstName" Grid.Row="0" Grid.Column="4" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <BoxView Grid.Row="0" Grid.Column="5" Grid.RowSpan="7" BackgroundColor="Black" />
+                <Label Text="LastName" Grid.Row="0" Grid.Column="6" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                <!-- Horizontal line -->
+                <BoxView Grid.Row="1" Grid.ColumnSpan="7" BackgroundColor="Black" />
+
+                <!-- Employee 1 -->
+                <Image Source="roi_logo.png" Grid.Row="2" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
+                <Label Text="ID 1" Grid.Row="2" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label Text="FirstName 1" Grid.Row="2" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label Text="LastName 1" Grid.Row="2" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                <!-- Horizontal line -->
+                <BoxView Grid.Row="3" Grid.ColumnSpan="7" BackgroundColor="Black" />
+
+                <!-- Employee 2 -->
+                <Image Source="roi_logo.png" Grid.Row="4" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
+                <Label Text="ID 2" Grid.Row="4" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label Text="FirstName 2" Grid.Row="4" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label Text="LastName 2" Grid.Row="4" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                <!-- Horizontal line -->
+                <BoxView Grid.Row="5" Grid.ColumnSpan="7" BackgroundColor="Black" />
+
+                <!-- Employee 3 -->
+                <Image Source="roi_logo.png" Grid.Row="6" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
+                <Label Text="ID 3" Grid.Row="6" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label Text="FirstName 3" Grid.Row="6" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label Text="LastName 3" Grid.Row="6" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <!--Delete button-->
+            <Button
+                    x:Name="Refresh"
+                    Text="Refresh"
+                    AutomationProperties.HelpText="refresh the table of employees"
+                    BackgroundColor= "#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"/>
+
+
+
+
+
 
         </StackLayout>
     </Grid>
