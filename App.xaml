@@ -1,11 +1,14 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ROIMobileApp"
-             x:Class="ROIMobileApp.App">
+             xmlns:local="clr-namespace:ROI_app"
+             x:Class="ROI_app.App">
+
+    <!-- Application Resources -->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!-- Merge external resource dictionaries -->
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>

@@ -1,70 +1,98 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ROIMobileApp.MainPage">
+             x:Class="ROI_app.MainPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <!-- Background image -->
+        <Image
+            Source="burnt_orange_texture_image.png"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" />
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <StackLayout>
+            <!-- Header section with Home button and logo -->
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10">
+                <Button
+                    x:Name="Home"
+                    Text="HOME"
+                    AutomationProperties.HelpText="Navigates back to the home button"
+                    BackgroundColor="Red"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"
+                    Clicked="OnHomeButtonClicked"/>
+                <!-- Event handler for the Home button click -->
 
-            <Image
-                Source="Brand_Pattern_1.png"
-                SemanticProperties.Description="background"
-                Aspect="AspectFill"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill" />
+                <Image
+                    Source="roi_logo.png"
+                    AutomationProperties.Name="ROI logo"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    Margin="10, 0, 20, 0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Grid.Row="0" />
 
-            <Image
-                Source="ROI_Logo.png"
-                SemanticProperties.Description="ROi logo"
-                HorizontalOptions="End" VerticalOptions="Start" 
-                Margin="0, 20, 20, 0" WidthRequest="50" HeightRequest="50" />
+            </StackLayout>
 
+            <!-- Welcome label -->
             <Label
-                Text="Welcome to ROI application. Please select an option"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="End"
-                VerticalOptions="Start"/>
-
-
-
-            <Button
-                x:Name="Home"
-                Text="Home"
-                SemanticProperties.Hint="This is the home button and when clicked will navigate back to the home buttom"
-                
-                HorizontalOptions="Start"
-                VerticalOptions="Start"
-                BackgroundColor="Red"  />
-
-            <Button
-                x:Name="View Details"
-                Text="View Employees Details"
-                SemanticProperties.Hint="naviagtes to the view employees page"
-                
+                Text="Welcome to ROI application. Please select an option."
+                FontSize="30"
+                TextColor="White"
                 HorizontalOptions="Center"
-                BackgroundColor="Red" />
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center" />
 
-            <Button
-                x:Name="Update Details"
-                Text="Update Employee Details"
-                SemanticProperties.Hint="navigates to the update page"
-                
+            <!-- Buttons section -->
+            <StackLayout
                 HorizontalOptions="Center"
-                BackgroundColor="Red" />
+                VerticalOptions="Center"
+                Margin="10">
 
-            <Button
-                x:Name="Delete details"
-                Text="Delete Employee Details"
-                SemanticProperties.Hint="navigates to the delete page"
-                
-                HorizontalOptions="Center"
-                BackgroundColor="Red" />
+                <!-- View Employees Details button -->
+                <Button
+                    x:Name="ViewEmployeesDetails"
+                    Text="View Employees Details"
+                    AutomationProperties.HelpText="Navigates to the View Employees Details page"
+                    BackgroundColor="Red"
+                    HorizontalOptions="Center"
+                    Margin="10"
+                    FontSize="30"
+                    WidthRequest="300"
+                    HeightRequest="100"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <!-- Update Employees button -->
+                <Button
+                    x:Name="UpdateEmployees"
+                    Text="Update Employees"
+                    AutomationProperties.HelpText="Navigates to the Update Employees page"
+                    BackgroundColor="Red"
+                    HorizontalOptions="Center"
+                    Margin="10"
+                    FontSize="30"
+                    WidthRequest="300"
+                    HeightRequest="100"
+                    Clicked="OnUpdateEmployeesClicked"/>
+                <!-- Event handler for the Update Employees button click -->
 
+                <!-- Delete Button -->
+                <Button
+                    x:Name="DeleteButton"
+                    Text="Delete Button"
+                    AutomationProperties.HelpText="Navigates you to the delete page"
+                    BackgroundColor="Red"
+                    HorizontalOptions="Center"
+                    Margin="10"
+                    FontSize="30"
+                    WidthRequest="300"
+                    HeightRequest="100"/>
+
+            </StackLayout>
+
+        </StackLayout>
+    </Grid>
 </ContentPage>

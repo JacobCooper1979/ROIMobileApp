@@ -1,26 +1,24 @@
-﻿namespace ROIMobileApp;
+﻿using Microsoft.Maui.Controls;
 
-public partial class MainPage : ContentPage
+namespace ROI_app
 {
-	int count = 0;
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+        private async void OnUpdateEmployeesClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UpdateEmployees());
+        }
 
+        private async void OnHomeButtonClicked(object sender, EventArgs e)
+        {
+            // Navigate back to the MainPage by popping to the root page
+            await Navigation.PopToRootAsync();
+        }
+
+    }
 }
-/*	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
-}
-
-*/
