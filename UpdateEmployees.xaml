@@ -41,7 +41,7 @@
 
             <!-- Welcome label -->
             <Label
-                Text="Employee Update"
+                Text="Please enter the employees First Name, Last Name and employees ID"
                 FontSize="30"
                 BackgroundColor= "#941a1d"
                 TextColor="Black"
@@ -49,8 +49,68 @@
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center" />
 
+            <!-- Users txt for employee ID -->
+            <Entry
+                x:Name="FirstName"
+                Placeholder="First Name: "
+                Margin="20"
+                FontSize="20">
+                <Entry.Resources>
+                    <Style TargetType="Entry">
+                        <Setter Property="BackgroundColor" Value="#941a1d" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="PlaceholderColor" Value="black" />
+                        <Setter Property="HeightRequest" Value="45" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="FontAttributes" Value="Bold" />
+                    </Style>
+                </Entry.Resources>
+            </Entry>
 
+            <Entry
+                x:Name="LastName"
+                Placeholder="Last Name: "
+                Margin="20"
+                FontSize="20">
+                <Entry.Resources>
+                    <Style TargetType="Entry">
+                        <Setter Property="BackgroundColor" Value="#941a1d" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="PlaceholderColor" Value="black" />
+                        <Setter Property="HeightRequest" Value="45" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="FontAttributes" Value="Bold" />
+                    </Style>
+                </Entry.Resources>
+            </Entry>
 
+            <Entry
+                x:Name="EmployeeID"
+                Placeholder="Employee ID: "
+                Margin="20"
+                FontSize="20">
+                <Entry.Resources>
+                    <Style TargetType="Entry">
+                        <Setter Property="BackgroundColor" Value="#941a1d" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="PlaceholderColor" Value="black" />
+                        <Setter Property="HeightRequest" Value="45" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="FontAttributes" Value="Bold" />
+                    </Style>
+                </Entry.Resources>
+            </Entry>
+
+            <!--Delete button-->
+            <Button
+                    x:Name="UpdateButton"
+                    Text="Update Employee"
+                    AutomationProperties.HelpText="This adds a new employee"
+                    BackgroundColor= "#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"/>
 
         </StackLayout>
     </Grid>
