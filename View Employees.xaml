@@ -3,34 +3,55 @@
              x:Class="ROI_app.ViewEmployees"
              NavigationPage.HasNavigationBar="False">
     <Grid>
+        <!-- Background image -->
         <Image
-            Source="burnt_orange_texture_image.png"
+            Source="brand_pattern_1.png"
             Aspect="AspectFill"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" />
 
         <StackLayout>
-            <!-- Home Button -->
-            <Button
-                x:Name="Home"
-                Text="HOME"
-                AutomationProperties.HelpText="Navigates back to the home button"
-                BackgroundColor="Red"
-                HeightRequest="110"
-                WidthRequest="150"
-                FontSize="30"
-                Clicked="OnHomeButtonClicked"/>
+            <!-- Header section with Home button and logo -->
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10">
+                <Button
+                    x:Name="Home"
+                    Text="HOME"
+                    AutomationProperties.HelpText="Navigates back to the home button"
+                    BackgroundColor= "#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"
+                    Clicked="OnHomeButtonClicked"/>
+                <!-- Event handler for the Home button click -->
 
-            <!-- ROI Logo -->
-            <Image
-                Source="roi_logo.png"
-                AutomationProperties.Name="ROI logo"
-                HeightRequest="200"
-                WidthRequest="200"
-                Margin="10, 0, 20, 0"
-                VerticalOptions="Start"
-                HorizontalOptions="End"
-                Grid.Row="0" />
+                <Image
+                    Source="roi_logo.png"
+                    AutomationProperties.Name="ROI logo"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    Margin="10, 0, 20, 0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Grid.Row="0" />
+
+            </StackLayout>
+
+            <!-- Welcome label -->
+            <Label
+                Text="Employee View Page"
+                FontSize="30"
+                BackgroundColor= "#941a1d"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center" />
+
+            
+            
+
         </StackLayout>
     </Grid>
 </ContentPage>
