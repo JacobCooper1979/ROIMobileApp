@@ -35,7 +35,7 @@ namespace ROI_app
             else
             {
                 // Create an instance of the Employee class
-                Employee employee = new Employee(firstName, lastName, employeeID);
+                Employees employee = new Employees(firstName, lastName, employeeID);
 
                 // Process the employee data (update the employee record in the database)
                 ProcessEmployeeData(employee);
@@ -51,21 +51,21 @@ namespace ROI_app
         }
 
         // Method to process the employee data into SQLite
-        private void ProcessEmployeeData(Employee employee)
+        private void ProcessEmployeeData(Employees employee)
         {
             // TODO: Implement SQLite operations
 
         }
     }
 
-    // Employee class definition
-    public class Employee
+    // Employees Class updated for now...
+    public class Employees
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmployeeID { get; set; }
 
-        public Employee(string firstName, string lastName, string employeeID)
+        public Employees(string firstName, string lastName, string employeeID)
         {
             FirstName = firstName;
             LastName = lastName;

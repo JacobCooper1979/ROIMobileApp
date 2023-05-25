@@ -7,43 +7,54 @@ using SQLite;
 
 namespace ROI_app
 {
-    //employees class
+    // employees class
     public class Employee
     {
         [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int Id { get; set; }
 
-        [System.ComponentModel.DataAnnotations.MaxLength(50)]
+        [MaxLength(50)]
         public string FirstName { get; set; }
 
-        [System.ComponentModel.DataAnnotations.MaxLength(50)]
+        [MaxLength(50)]
         public string LastName { get; set; }
     }
 
     // sets employees to the database
-    public class EmployeeDbContext : DbContext
+    public class EmployeeDbContext
     {
-        public DbSet<Employee> Employees { get; set; }
+        private SQLiteAsyncConnection _connection;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public EmployeeDbContext()
         {
-            // Configure the database path for SQLite
             string databasePath = Path.Combine(FileSystem.AppDataDirectory, "employees.db");
-            optionsBuilder.UseSqlite($"Filename={databasePath}");
+            _connection = new SQLiteAsyncConnection(databasePath);
+            _connection.CreateTableAsync<Employee>().Wait();
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public async Task<List<Employee>> GetEmployeesAsync()
         {
-            // Define the constraints and properties for Employee 
-            modelBuilder.Entity<Employee>()
-                .Property(e => e.FirstName)
-                .IsRequired()
-                .HasMaxLength(50);
+            // Retrieve all employees from the database asynchronously
+            return await _connection.Table<Employee>().ToListAsync();
+        }
 
-            modelBuilder.Entity<Employee>()
-                .Property(e => e.LastName)
-                .IsRequired()
-                .HasMaxLength(50);
+        public async Task<int> SaveEmployeeAsync(Employee employee)
+        {
+            // Save or update an employee based on the provided Id
+            if (employee.Id == 0)
+            {
+                return await _connection.InsertAsync(employee);
+            }
+            else
+            {
+                return await _connection.UpdateAsync(employee);
+            }
+        }
+
+        public async Task<int> DeleteEmployeeAsync(Employee employee)
+        {
+            // Delete an employee from the database
+            return await _connection.DeleteAsync(employee);
         }
     }
 
@@ -52,10 +63,7 @@ namespace ROI_app
     {
         public static void Initialize()
         {
-            using (var db = new EmployeeDbContext())
-            {
-                db.Database.Migrate();
-            }
+            // No migration needed for SQLite
         }
     }
 
@@ -72,31 +80,19 @@ namespace ROI_app
         public async Task<List<Employee>> GetEmployeesAsync()
         {
             // Retrieve all employees from the database asynchronously
-            return await _context.Employees.ToListAsync();
+            return await _context.GetEmployeesAsync();
         }
 
         public async Task<int> SaveEmployeeAsync(Employee employee)
         {
             // Save or update an employee based on the provided Id
-            if (employee.Id == 0)
-            {
-                _context.Employees.Add(employee);
-            }
-            else
-            {
-                _context.Employees.Update(employee);
-            }
-
-            return await _context.SaveChangesAsync();
+            return await _context.SaveEmployeeAsync(employee);
         }
 
         public async Task<int> DeleteEmployeeAsync(Employee employee)
         {
             // Delete an employee from the database
-            _context.Employees.Remove(employee);
-            return await _context.SaveChangesAsync();
+            return await _context.DeleteEmployeeAsync(employee);
         }
     }
 }
-
-
