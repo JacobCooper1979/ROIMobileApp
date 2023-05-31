@@ -67,7 +67,8 @@
                     TextColor="Black"
                     HeightRequest="110"
                     WidthRequest="150"
-                    FontSize="30"/>
+                    FontSize="30"
+                    Clicked="OnDeleteButtonClicked"/>
             
 
 
