@@ -61,14 +61,7 @@ namespace ROI_app
         }
     }
 
-    // DatabaseInitializer class for initializing the database
-    public static class DatabaseInitializer
-    {
-        public static void Initialize()
-        {
-            // No migration needed for SQLite
-        }
-    }
+  
 
     // EmployeeRepository class for performing CRUD operations on Employee
     public class EmployeeRepository
