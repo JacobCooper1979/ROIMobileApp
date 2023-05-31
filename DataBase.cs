@@ -7,7 +7,7 @@ using SQLite;
 
 namespace ROI_app
 {
-    // employees class
+    // Employees class
     public class Employee
     {
         [SQLite.PrimaryKey, SQLite.AutoIncrement]
@@ -18,9 +18,12 @@ namespace ROI_app
 
         [MaxLength(50)]
         public string LastName { get; set; }
+
+        [MaxLength(10)]
+        public string EmployeeID { get; set; }
     }
 
-    // sets employees to the database
+    // EmployeeDbContext class for database operations
     public class EmployeeDbContext
     {
         private SQLiteAsyncConnection _connection;
@@ -58,7 +61,7 @@ namespace ROI_app
         }
     }
 
-    // Initializes the database and performs migration if needed
+    // DatabaseInitializer class for initializing the database
     public static class DatabaseInitializer
     {
         public static void Initialize()
@@ -67,7 +70,7 @@ namespace ROI_app
         }
     }
 
-    // Repository class for performing CRUD operations on Employee
+    // EmployeeRepository class for performing CRUD operations on Employee
     public class EmployeeRepository
     {
         private readonly EmployeeDbContext _context;
