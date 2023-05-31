@@ -25,7 +25,6 @@
                     WidthRequest="150"
                     FontSize="30"
                     Clicked="OnHomeButtonClicked"/>
-                <!-- Event handler for the Home button click -->
 
                 <Image
                     Source="roi_logo.png"
@@ -83,7 +82,6 @@
                     WidthRequest="300"
                     HeightRequest="100"
                     Clicked="OnUpdateEmployeesClicked"/>
-                <!-- Event handler for the Update Employees button click -->
 
                 <!-- Delete Button -->
                 <Button
@@ -98,7 +96,6 @@
                     WidthRequest="300"
                     HeightRequest="100"
                     Clicked="OnRemoveEmployeesClicked"/>
-                <!-- Add Clicked event handler -->
 
 
             </StackLayout>

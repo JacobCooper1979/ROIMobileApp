@@ -82,47 +82,44 @@
                 <!-- Horizontal line -->
                 <BoxView Grid.Row="1" Grid.ColumnSpan="7" BackgroundColor="Black" />
 
-                <!-- Employee 1 -->
-                <Image Source="roi_logo.png" Grid.Row="2" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
-                <Label Text="ID 1" Grid.Row="2" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Label Text="FirstName 1" Grid.Row="2" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Label Text="LastName 1" Grid.Row="2" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <!-- Employee data -->
+                <ListView ItemsSource="{Binding Employees}" Grid.Row="2" Grid.ColumnSpan="7">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
 
-                <!-- Horizontal line -->
-                <BoxView Grid.Row="3" Grid.ColumnSpan="7" BackgroundColor="Black" />
-
-                <!-- Employee 2 -->
-                <Image Source="roi_logo.png" Grid.Row="4" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
-                <Label Text="ID 2" Grid.Row="4" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Label Text="FirstName 2" Grid.Row="4" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Label Text="LastName 2" Grid.Row="4" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-
-                <!-- Horizontal line -->
-                <BoxView Grid.Row="5" Grid.ColumnSpan="7" BackgroundColor="Black" />
-
-                <!-- Employee 3 -->
-                <Image Source="roi_logo.png" Grid.Row="6" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
-                <Label Text="ID 3" Grid.Row="6" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Label Text="FirstName 3" Grid.Row="6" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                <Label Text="LastName 3" Grid.Row="6" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                    <Image Source="{Binding Image}" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
+                                    <Label Text="{Binding ID}" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding FirstName}" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding LastName}" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
 
             <!--Delete button-->
             <Button
-                    x:Name="Refresh"
-                    Text="Refresh"
-                    AutomationProperties.HelpText="refresh the table of employees"
-                    BackgroundColor= "#941a1d"
-                    TextColor="Black"
-                    HeightRequest="110"
-                    WidthRequest="150"
-                    FontSize="30"/>
-
-
-
-
-
-
+                x:Name="Refresh"
+                Text="Refresh"
+                AutomationProperties.HelpText="refresh the table of employees"
+                BackgroundColor="#941a1d"
+                TextColor="Black"
+                HeightRequest="110"
+                WidthRequest="150"
+                FontSize="30"
+                Clicked="OnRefreshButtonClicked"/>
         </StackLayout>
     </Grid>
 </ContentPage>

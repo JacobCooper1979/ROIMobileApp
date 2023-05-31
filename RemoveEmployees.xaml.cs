@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ROI_app
 {
-    // Represents the RemoveEmployees content page
+    //RemoveEmployees content page
     public partial class RemoveEmployees : ContentPage
     {
         public RemoveEmployees()

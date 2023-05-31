@@ -61,7 +61,7 @@ namespace ROI_app
         }
     }
 
-    // EmployeeRepository class for performing CRUD operations on Employee
+    // EmployeeRepository 
     public class EmployeeRepository
     {
         private readonly EmployeeDbContext _context;
