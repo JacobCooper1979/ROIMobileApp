@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace ROIMobileApp;
+namespace ROI_app;
 
 class Program : MauiApplication
 {

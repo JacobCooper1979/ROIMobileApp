@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace ROIMobileApp;
+namespace ROI_app;
 
 [Application]
 public class MainApplication : MauiApplication

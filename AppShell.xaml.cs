@@ -1,9 +1,11 @@
-﻿namespace ROIMobileApp;
-
-public partial class AppShell : Shell
+﻿namespace ROI_app
 {
-	public AppShell()
-	{
-		InitializeComponent();
-	}
+    // Define the AppShell class that represents the main Shell of your application
+    public partial class AppShell : Shell
+    {
+        public AppShell()
+        {
+            InitializeComponent();
+        }
+    }
 }
