@@ -38,7 +38,6 @@ namespace ROI_app
             // Check if the database file already exists
             if (!File.Exists(databasePath))
             {
-                _connection.ExecuteAsync("DROP TABLE IF EXISTS Employees");
                 _connection = new SQLiteAsyncConnection(databasePath);
                 _connection.CreateTableAsync<Employee>().Wait();
                 
