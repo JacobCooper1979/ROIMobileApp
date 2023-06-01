@@ -1,23 +1,57 @@
-﻿namespace ROI_app;
-using ROI_app;
-using SQLite;
-
-public partial class App : Application
+﻿namespace ROI_app
 {
-    public App()
+    using SQLite;
+    using Microsoft.Maui.Controls;
+
+    public partial class App : Application
     {
-        InitializeComponent();
+        private SQLiteAsyncConnection _database; // Declare _database at the class level
 
-        // Set the MainPage of the application to an instance of the AppShell
-        MainPage = new AppShell();
+        public App()
+        {
+            InitializeComponent();
 
-        // Initialize the database
-        InitializeDatabase();
+            // Set the MainPage of the application to an instance of the AppShell
+            MainPage = new AppShell();
+
+            // Initialize the database
+            InitializeDatabase();
+
+            // Initialize the SQLite database connection
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "settings.db");
+            _database = new SQLiteAsyncConnection(databasePath);
+            _database.CreateTableAsync<UserSet>().Wait();
+
+            // Load the user settings
+            LoadUserSettings();
+        }
+
+        private async void LoadUserSettings()
+        {
+            // Check if the user settings already exist in the database
+            var existingSettings = await _database.Table<UserSet>().FirstOrDefaultAsync();
+            if (existingSettings != null)
+            {
+                var currentTheme = existingSettings.lightOrDark;
+                if (currentTheme)
+                    Application.Current.UserAppTheme = AppTheme.Dark;
+                else
+                    Application.Current.UserAppTheme = AppTheme.Light;
+            }
+        }
+
+        private void InitializeDatabase()
+        {
+            EmployeeDbContext dbContext = new EmployeeDbContext();
+        }
     }
 
-    private void InitializeDatabase()
+    public class UserSet
     {
-        EmployeeDbContext dbContext = new EmployeeDbContext();
-        
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public bool lightOrDark { get; set; }
     }
 }

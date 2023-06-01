@@ -60,17 +60,29 @@
 
                 <!-- Buttons section -->
                 <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
+                        <Label Grid.Column="0">ENTER YOUR NAME</Label>
+                        <Entry Grid.Column="0" x:Name="NameEntry"></Entry>
 
+                        <Label Grid.Row="1">Change Theme</Label>
+                        <Switch x:Name="togTheme" Grid.Row="2" Toggled="OnThemeSwitchToggled" BackgroundColor="DimGrey" />
 
+                        <Label Grid.Column="1">ENTER YOUR AGE</Label>
+                        <Entry Grid.Column="1" x:Name="AgeEntry"></Entry>
 
-
-
-
-
-
-
-
+                        <Button Grid.Row="3" Grid.Column="1" Clicked="SaveButton_Clicked" Text="SAVE USER SETTINGS"></Button>
+                    </Grid>
 
                 </StackLayout>
 

@@ -56,17 +56,6 @@ namespace ROI_app
             LoadEmployees();
         }
 
-        // Method to load employees from the database or service
-        /*private void LoadEmployees()
-        {
-            // Clear existing employees
-            Employees.Clear();
-
-            // Fetch employee data from the database or service
-            Employees.Add(new Models.Employee { ID = "ID 1", FirstName = "FirstName 1", LastName = "LastName 1" });
-            Employees.Add(new Models.Employee { ID = "ID 2", FirstName = "FirstName 2", LastName = "LastName 2" });
-            Employees.Add(new Models.Employee { ID = "ID 3", FirstName = "FirstName 3", LastName = "LastName 3" });
-        }*/
 
         private async void LoadEmployees()
         {
