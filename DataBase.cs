@@ -30,7 +30,7 @@ namespace ROI_app
 
         public EmployeeDbContext()
         {
-            string databasePath = Path.Combine(FileSystem.AppDataDirectory, "employees.db");
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "employees.db");
             _connection = new SQLiteAsyncConnection(databasePath);
             _connection.CreateTableAsync<Employee>().Wait();
         }

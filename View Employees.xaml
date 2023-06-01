@@ -83,7 +83,7 @@
                 <BoxView Grid.Row="1" Grid.ColumnSpan="7" BackgroundColor="Black" />
 
                 <!-- Employee data -->
-                <ListView ItemsSource="{Binding Employees}" Grid.Row="2" Grid.ColumnSpan="7">
+                <ListView ItemsSource="{Binding ShowEmployees}" Grid.Row="2" Grid.ColumnSpan="7">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

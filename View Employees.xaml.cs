@@ -10,6 +10,9 @@ namespace ROI_app.Models
     {
         private const string DefaultImage = "roi_logo.png";
 
+        private ObservableCollection<Models.Employee> employees{ get; set; }
+
+        public ObservableCollection<Models.Employee> Employees { get { return Employees; } }
         private string image;
         public string Image
         {
@@ -29,6 +32,8 @@ namespace ROI_app
     public partial class ViewEmployees : ContentPage
     {
         private ObservableCollection<Models.Employee> Employees { get; set; }
+
+        public ObservableCollection<Models.Employee> ShowEmployees { get { return Employees; } }
 
         public ViewEmployees()
         {
@@ -52,7 +57,7 @@ namespace ROI_app
         }
 
         // Method to load employees from the database or service
-        private void LoadEmployees()
+        /*private void LoadEmployees()
         {
             // Clear existing employees
             Employees.Clear();
@@ -61,7 +66,29 @@ namespace ROI_app
             Employees.Add(new Models.Employee { ID = "ID 1", FirstName = "FirstName 1", LastName = "LastName 1" });
             Employees.Add(new Models.Employee { ID = "ID 2", FirstName = "FirstName 2", LastName = "LastName 2" });
             Employees.Add(new Models.Employee { ID = "ID 3", FirstName = "FirstName 3", LastName = "LastName 3" });
+        }*/
+
+        private async void LoadEmployees()
+        {
+            // Clear existing employees
+            Employees.Clear();
+
+            // Retrieve employees from the database using the EmployeeRepository
+            EmployeeRepository employeeRepository = new EmployeeRepository();
+            List<Employee> employees = await employeeRepository.GetEmployeesAsync();
+
+            // Add retrieved employees to the Employees collection
+            foreach (var employee in employees)
+            {
+                Employees.Add(new Models.Employee
+                {
+                    ID = employee.EmployeeID,
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName
+                });
+            }
         }
+
     }
 }
 
