@@ -24,15 +24,65 @@ namespace ROI_app
     }
 
     // EmployeeDbContext class for database operations
+    /*    public class EmployeeDbContext
+        {
+            private SQLiteAsyncConnection _connection;
+
+            public EmployeeDbContext()
+            {
+                var databasePath = Path.Combine(FileSystem.AppDataDirectory, "employees.db");
+                _connection = new SQLiteAsyncConnection(databasePath);
+                _connection.CreateTableAsync<Employee>().Wait();
+            }
+
+            public async Task<List<Employee>> GetEmployeesAsync()
+            {
+                // Retrieve all employees from the database asynchronously
+                return await _connection.Table<Employee>().ToListAsync();
+            }
+
+            public async Task<int> SaveEmployeeAsync(Employee employee)
+            {
+                // Save or update an employee based on the provided Id
+                if (employee.Id == 0)
+                {
+                    return await _connection.InsertAsync(employee);
+                }
+                else
+                {
+                    return await _connection.UpdateAsync(employee);
+                }
+            }
+
+            public async Task<int> DeleteEmployeeAsync(Employee employee)
+            {
+                // Delete an employee from the database
+                return await _connection.DeleteAsync(employee);
+            }
+        }*/
+
     public class EmployeeDbContext
     {
         private SQLiteAsyncConnection _connection;
 
         public EmployeeDbContext()
         {
+            
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "employees.db");
-            _connection = new SQLiteAsyncConnection(databasePath);
-            _connection.CreateTableAsync<Employee>().Wait();
+
+
+            // Check if the database file already exists
+            if (!File.Exists(databasePath))
+            {
+                _connection.ExecuteAsync("DROP TABLE IF EXISTS Employees");
+                _connection = new SQLiteAsyncConnection(databasePath);
+                _connection.CreateTableAsync<Employee>().Wait();
+                
+            }
+            else
+            {
+                _connection = new SQLiteAsyncConnection(databasePath);
+            }
         }
 
         public async Task<List<Employee>> GetEmployeesAsync()
@@ -61,6 +111,7 @@ namespace ROI_app
         }
     }
 
+
     // EmployeeRepository 
     public class EmployeeRepository
     {
@@ -88,5 +139,7 @@ namespace ROI_app
             // Delete an employee from the database
             return await _context.DeleteEmployeeAsync(employee);
         }
+
+
     }
 }
