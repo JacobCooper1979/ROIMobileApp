@@ -1,10 +1,8 @@
-using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Xaml;
 using SQLite;
 using System;
 using System.IO;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace ROI_app
 {
@@ -19,17 +17,17 @@ namespace ROI_app
             InitializeUserSettings();
         }
 
-        private void InitializeDatabase()
+        private async void InitializeDatabase()
         {
             // Get the path to the database file
             string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "settings.db");
 
             // Create the database connection
             _database = new SQLiteAsyncConnection(databasePath);
-            _database.CreateTableAsync<UserSet>().Wait();
+            await _database.CreateTableAsync<UserSet>();
         }
 
-        private async void InitializeUserSettings()
+        private async Task InitializeUserSettings()
         {
             // Check if the user settings already exist in the database
             var existingSettings = await _database.Table<UserSet>().FirstOrDefaultAsync();
@@ -38,28 +36,17 @@ namespace ROI_app
                 NameEntry.Text = existingSettings.Name;
                 AgeEntry.Text = existingSettings.Age.ToString();
 
-                if (existingSettings.lightOrDark)
-                {
-                    togTheme.IsToggled = true;
-                }
-                else
-                {
-                    togTheme.IsToggled = false;
-                }
+                togTheme.IsToggled = existingSettings.lightOrDark;
 
-                var currentTheme = existingSettings.lightOrDark;
-                if (currentTheme)
-                    Application.Current.UserAppTheme = AppTheme.Dark;
-                else
-                    Application.Current.UserAppTheme = AppTheme.Light;
+                var currentTheme = existingSettings.lightOrDark ? AppTheme.Dark : AppTheme.Light;
+                Application.Current.UserAppTheme = currentTheme;
             }
         }
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
             var name = NameEntry.Text;
-            int age = 0;
-            int.TryParse(AgeEntry.Text, out age);
+            int.TryParse(AgeEntry.Text, out int age);
             bool theme = togTheme.IsToggled;
 
             var userSettings = new UserSet
@@ -81,16 +68,30 @@ namespace ROI_app
             await Navigation.PopToRootAsync();
         }
 
+        // Sets to dark theme vs light theme
         private void OnThemeSwitchToggled(object sender, ToggledEventArgs e)
         {
             bool isDarkTheme = e.Value;
             Preferences.Set("DarkThemeOn", isDarkTheme ? "Dark" : "Light");
 
             // Apply the theme
-            if (isDarkTheme)
-                Application.Current.UserAppTheme = AppTheme.Dark;
-            else
-                Application.Current.UserAppTheme = AppTheme.Light;
+            var currentTheme = isDarkTheme ? AppTheme.Dark : AppTheme.Light;
+            Application.Current.UserAppTheme = currentTheme;
+        }
+
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            double newValue = e.NewValue;
+            SetThemeBrightness(newValue);
+        }
+
+        private void SetThemeBrightness(double brightness)
+        {
+            // Adjust the theme brightness here
+            // Example: Update the theme based on the provided brightness value
+            var currentTheme = Application.Current.RequestedTheme;
+            var newTheme = currentTheme; // Replace this with your custom theme adjustment logic
+            Application.Current.UserAppTheme = newTheme;
         }
     }
 }

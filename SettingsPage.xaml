@@ -81,6 +81,11 @@
                         <Label Grid.Column="1">ENTER YOUR AGE</Label>
                         <Entry Grid.Column="1" x:Name="AgeEntry"></Entry>
 
+                        <Label Grid.Column="2"></Label>
+                        <Slider x:Name="slider" Minimum="0" Maximum="1" ValueChanged="Slider_ValueChanged" />
+
+
+
                         <Button Grid.Row="3" Grid.Column="1" Clicked="SaveButton_Clicked" Text="SAVE USER SETTINGS"></Button>
                     </Grid>
 
