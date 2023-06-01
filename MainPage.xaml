@@ -97,6 +97,20 @@
                     HeightRequest="100"
                     Clicked="OnRemoveEmployeesClicked"/>
 
+                <!-- SettingsPage -->
+                <Button
+                    x:Name="SettingsPage"
+                    Text="Settings Page"
+                    AutomationProperties.HelpText="Navigates you to the Settings Page"
+                    BackgroundColor= "#941a1d"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    Margin="10"
+                    FontSize="30"
+                    WidthRequest="300"
+                    HeightRequest="100"
+                    Clicked="OnSettingsPageClicked"/>
+
 
             </StackLayout>
 

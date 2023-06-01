@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ROIMobileApp.Settings"
-             Title="Settings">
-    <Grid>
-        <!-- Background image -->
-        <Image
-            Source="black_texture_image.png"
+             x:Class="ROI_app.SettingsPage"
+             Title="SettingsPage">
+    <VerticalStackLayout>
+        <Grid>
+            <!-- Background image -->
+            <Image
+            Source="burnt_orange_texture_image.png"
             Aspect="AspectFill"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" />
 
-        <StackLayout>
-            <!-- Header section with logo -->
-            <StackLayout
+            <StackLayout>
+                <!-- Header section with Home button and logo -->
+                <StackLayout
                 Orientation="Horizontal"
                 Margin="10">
-
-                <Button
+                    <Button
                     x:Name="Home"
                     Text="HOME"
                     AutomationProperties.HelpText="Navigates back to the home button"
@@ -27,8 +27,8 @@
                     WidthRequest="150"
                     FontSize="30"
                     Clicked="OnHomeButtonClicked"/>
-                
-                <Image
+
+                    <Image
                     Source="roi_logo.png"
                     AutomationProperties.Name="ROI logo"
                     HeightRequest="200"
@@ -38,18 +38,44 @@
                     HorizontalOptions="End"
                     Grid.Row="0" />
 
-                
-            </StackLayout>
+                    <!-- Welcome label -->
+                    <Label
+                    Text="Welcome to ROI application. Please select an option."
+                    FontSize="30"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="Center" />
 
-            <!-- Welcome label -->
-            <Label
-                Text="Welcome to the settings page"
+                </StackLayout>
+
+                <!-- Welcome label -->
+                <Label
+                Text="Welcome to ROI application. Please select an option."
                 FontSize="30"
-                BackgroundColor="#941a1d"
                 TextColor="Black"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center" />
-        </StackLayout>
-    </Grid>
+
+                <!-- Buttons section -->
+                <StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+                </StackLayout>
+
+            </StackLayout>
+        </Grid>
+    </VerticalStackLayout>
+    
 </ContentPage>

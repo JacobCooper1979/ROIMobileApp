@@ -35,6 +35,12 @@ namespace ROI_app
             await Navigation.PushAsync(new ViewEmployees());
         }
 
+        //View Employees
+        private async void OnSettingsPageClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsPage());
+        }
+
 
     }
 }
