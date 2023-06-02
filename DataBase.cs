@@ -23,24 +23,18 @@ namespace ROI_app
         public string EmployeeID { get; set; }
     }
 
- 
-
     public class EmployeeDbContext
     {
         private SQLiteAsyncConnection _connection;
 
         public EmployeeDbContext()
         {
-            
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "employees.db");
-
 
             // Check if the database file already exists
             if (!File.Exists(databasePath))
             {
                 _connection = new SQLiteAsyncConnection(databasePath);
-                _connection.CreateTableAsync<Employee>().Wait();
-                
             }
             else
             {
@@ -48,15 +42,18 @@ namespace ROI_app
             }
         }
 
+        public async Task InitializeDatabaseAsync()
+        {
+            await _connection.CreateTableAsync<Employee>();
+        }
+
         public async Task<List<Employee>> GetEmployeesAsync()
         {
-            // Retrieve all employees from the database asynchronously
             return await _connection.Table<Employee>().ToListAsync();
         }
 
         public async Task<int> SaveEmployeeAsync(Employee employee)
         {
-            // Save or update an employee based on the provided Id
             if (employee.Id == 0)
             {
                 return await _connection.InsertAsync(employee);
@@ -69,13 +66,10 @@ namespace ROI_app
 
         public async Task<int> DeleteEmployeeAsync(Employee employee)
         {
-            // Delete an employee from the database
             return await _connection.DeleteAsync(employee);
         }
     }
 
-
-    // EmployeeRepository 
     public class EmployeeRepository
     {
         private readonly EmployeeDbContext _context;
@@ -87,22 +81,17 @@ namespace ROI_app
 
         public async Task<List<Employee>> GetEmployeesAsync()
         {
-            // Retrieve all employees from the database asynchronously
             return await _context.GetEmployeesAsync();
         }
 
         public async Task<int> SaveEmployeeAsync(Employee employee)
         {
-            // Save or update an employee based on the provided Id
             return await _context.SaveEmployeeAsync(employee);
         }
 
         public async Task<int> DeleteEmployeeAsync(Employee employee)
         {
-            // Delete an employee from the database
             return await _context.DeleteEmployeeAsync(employee);
         }
-
-
     }
 }

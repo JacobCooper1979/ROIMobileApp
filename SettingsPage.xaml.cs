@@ -10,14 +10,20 @@ namespace ROI_app
     {
         private SQLiteAsyncConnection _database;
 
+        //Initialize settings page
         public SettingsPage()
         {
             InitializeComponent();
-            InitializeDatabase();
-            InitializeUserSettings();
+            InitializeSettingsAsync();
         }
 
-        private async void InitializeDatabase()
+        private async void InitializeSettingsAsync()
+        {
+            await InitializeDatabase();
+            await InitializeUserSettings();
+        }
+
+        private async Task InitializeDatabase()
         {
             // Get the path to the database file
             string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "settings.db");
@@ -43,24 +49,35 @@ namespace ROI_app
             }
         }
 
-        private async void SaveButton_Clicked(object sender, EventArgs e)
+
+        private void SaveButton_Clicked(object sender, EventArgs e)
         {
             var name = NameEntry.Text;
-            int.TryParse(AgeEntry.Text, out int age);
-            bool theme = togTheme.IsToggled;
+            bool parsingSuccess = int.TryParse(AgeEntry.Text, out int age);
 
-            var userSettings = new UserSet
+            if (parsingSuccess)
             {
-                Name = name,
-                Age = age,
-                lightOrDark = theme
-            };
+                bool theme = togTheme.IsToggled;
 
-            await _database.InsertOrReplaceAsync(userSettings);
+                var userSettings = new UserSet
+                {
+                    Name = name,
+                    Age = age,
+                    lightOrDark = theme
+                };
 
-            // Show a confirmation message
-            await DisplayAlert("Success", "User settings saved", "OK");
+                _database.InsertOrReplaceAsync(userSettings);
+
+                // Show a confirmation message
+                DisplayAlert("Success", "User settings saved", "OK");
+            }
+            else
+            {
+                // Age parsing failed, show an error message or handle the failure
+                DisplayAlert("Error", "Invalid age input", "OK");
+            }
         }
+
 
         private async void OnHomeButtonClicked(object sender, EventArgs e)
         {
@@ -85,13 +102,28 @@ namespace ROI_app
             SetThemeBrightness(newValue);
         }
 
-        private void SetThemeBrightness(double brightness)
+
+        private static void SetThemeBrightness(double brightness)
         {
             // Adjust the theme brightness here
-            // Example: Update the theme based on the provided brightness value
-            var currentTheme = Application.Current.RequestedTheme;
-            var newTheme = currentTheme; // Replace this with your custom theme adjustment logic
-            Application.Current.UserAppTheme = newTheme;
+            Color lightThemeColor = Color.FromArgb("#FFFFFFFF");  // Light theme color (white)
+            Color darkThemeColor = Color.FromArgb("#FF000000");   // Dark theme color (black)
+
+            Color newThemeColor;
+            if (brightness < 0.5)
+            {
+                // Brightness is low, use dark theme color
+                newThemeColor = darkThemeColor;
+            }
+            else
+            {
+                // Brightness is high, use light theme color
+                newThemeColor = lightThemeColor;
+            }
+
+            // Apply the new theme color to the app
+            Application.Current.Resources["MyAppThemeColor"] = newThemeColor;
         }
+
     }
 }

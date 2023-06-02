@@ -1,8 +1,10 @@
-﻿namespace ROI_app
-{
-    using SQLite;
-    using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
+using System.IO;
+using System.Threading.Tasks;
+using SQLite;
 
+namespace ROI_app
+{
     public partial class App : Application
     {
         private SQLiteAsyncConnection _database; // Declare _database at the class level
@@ -20,7 +22,7 @@
             // Initialize the SQLite database connection
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "settings.db");
             _database = new SQLiteAsyncConnection(databasePath);
-            _database.CreateTableAsync<UserSet>().Wait();
+            //_database.CreateTableAsync<UserSet>().Wait();
 
             // Load the user settings
             LoadUserSettings();
@@ -43,6 +45,7 @@
         private void InitializeDatabase()
         {
             EmployeeDbContext dbContext = new EmployeeDbContext();
+            dbContext.InitializeDatabaseAsync().Wait();
         }
     }
 

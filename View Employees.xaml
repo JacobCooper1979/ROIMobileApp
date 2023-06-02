@@ -25,7 +25,6 @@
                     WidthRequest="150"
                     FontSize="30"
                     Clicked="OnHomeButtonClicked"/>
-                <!-- Event handler for the Home button click -->
 
                 <Image
                     Source="roi_logo.png"
