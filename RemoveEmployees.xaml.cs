@@ -13,7 +13,7 @@ namespace ROI_app
             InitializeComponent();
         }
 
-        // Event handler for the Home button click
+        // Event handler for the home button
         private async void OnHomeButtonClicked(object sender, EventArgs e)
         {
             // Navigate back to the previous page

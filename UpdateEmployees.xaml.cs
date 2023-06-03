@@ -17,14 +17,14 @@ namespace ROI_app
             _employeeRepository = new EmployeeRepository();
         }
 
-        // Event handler for the Home button click
+        // Event handler for the home button 
         private async void OnHomeButtonClicked(object sender, EventArgs e)
         {
             // Navigate back to the previous page
             await Navigation.PopAsync();
         }
 
-        // Event handler for the Update button click
+        // Event handler for the update button 
         private async void OnUpdateButtonClicked(object sender, EventArgs e)
         {
             string firstName = FirstName.Text;
@@ -46,8 +46,8 @@ namespace ROI_app
                     EmployeeID = employeeID
                 };
 
-                // Process the employee data (update the employee record in the database)
-                await ProcessEmployeeData(employee);
+                // Process the employee data to the database
+                await ProcessEmployee(employee);
 
                 // Display a success message
                 await DisplayAlert("Success", "Thank you, the employee has been updated.", "OK");
@@ -59,10 +59,10 @@ namespace ROI_app
             }
         }
 
-        // Method to process the employee data into SQLite
-        private async Task ProcessEmployeeData(Employee employee)
+        //process the employee data into SQLite
+        private async Task ProcessEmployee(Employee employee)
         {
-            // Save or update the employee record in the database
+            // update the employee record in the database
             await  _employeeRepository.SaveEmployeeAsync(employee);
         }
     }

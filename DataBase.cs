@@ -10,6 +10,7 @@ namespace ROI_app
     // Employees class
     public class Employee
     {
+        //sets Id as the primary key
         [SQLite.PrimaryKey, SQLite.AutoIncrement]
         public int Id { get; set; }
 
@@ -22,6 +23,7 @@ namespace ROI_app
         [MaxLength(10)]
         public string EmployeeID { get; set; }
     }
+    
 
     public class EmployeeDbContext
     {
@@ -42,16 +44,19 @@ namespace ROI_app
             }
         }
 
+        //Creates a table for employee
         public async Task InitializeDatabaseAsync()
         {
             await _connection.CreateTableAsync<Employee>();
         }
 
+        //Gets all employees from the Employee table
         public async Task<List<Employee>> GetEmployeesAsync()
         {
             return await _connection.Table<Employee>().ToListAsync();
         }
 
+        //Saves employee If the employee doesnt already exists 
         public async Task<int> SaveEmployeeAsync(Employee employee)
         {
             if (employee.Id == 0)
@@ -60,16 +65,20 @@ namespace ROI_app
             }
             else
             {
+                //If employee exists the employee is updated
                 return await _connection.UpdateAsync(employee);
             }
         }
 
+        //Deletes an employee from the empployee table
         public async Task<int> DeleteEmployeeAsync(Employee employee)
         {
             return await _connection.DeleteAsync(employee);
         }
     }
 
+
+    //Employee repository 
     public class EmployeeRepository
     {
         private readonly EmployeeDbContext _context;

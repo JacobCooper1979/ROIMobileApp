@@ -66,8 +66,6 @@
                     WidthRequest="300"
                     HeightRequest="100"
                     Clicked="OnViewEmployeesClicked"/>
-                <!-- Add Clicked event handler -->
-
 
                 <!-- Update Employees button -->
                 <Button
@@ -97,7 +95,7 @@
                     HeightRequest="100"
                     Clicked="OnRemoveEmployeesClicked"/>
 
-                <!-- SettingsPage -->
+                <!-- Settings page button -->
                 <Button
                     x:Name="SettingsPage"
                     Text="Settings Page"

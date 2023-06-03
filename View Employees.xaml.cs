@@ -14,11 +14,7 @@ namespace ROI_app.Models
 
         public ObservableCollection<Models.Employee> Employees { get { return Employees; } }
         private string image;
-        public string Image
-        {
-            get { return string.IsNullOrEmpty(image) ? DefaultImage : image; }
-            set { image = value; }
-        }
+        public string Image{get { return string.IsNullOrEmpty(image) ? DefaultImage : image; }set { image = value; }}
 
         public string ID { get; set; }
         public string FirstName { get; set; }
@@ -38,8 +34,11 @@ namespace ROI_app
         public ViewEmployees()
         {
             InitializeComponent();
+            //Initializes employees collection
             Employees = new ObservableCollection<Models.Employee>();
+            //loads employees from their database
             LoadEmployees();
+            //sets the binding for the grid
             BindingContext = this;
         }
 
@@ -62,11 +61,11 @@ namespace ROI_app
             // Clear existing employees
             Employees.Clear();
 
-            // Retrieve employees from the database using the EmployeeRepository
+            // Loads employees from the EmployeeRepository
             EmployeeRepository employeeRepository = new EmployeeRepository();
             List<Employee> employees = await employeeRepository.GetEmployeesAsync();
 
-            // Add retrieved employees to the Employees collection
+            // Add employees to the Employees collection
             foreach (var employee in employees)
             {
                 Employees.Add(new Models.Employee

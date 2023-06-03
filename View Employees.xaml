@@ -48,7 +48,7 @@
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center" />
 
-            <!-- Table-like layout for employees -->
+            <!-- Table layout for employees -->
             <Grid Margin="20" BackgroundColor="#941a1d">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
