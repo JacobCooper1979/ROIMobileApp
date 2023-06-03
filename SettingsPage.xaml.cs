@@ -41,14 +41,11 @@ namespace ROI_app
             {
                 NameEntry.Text = existingSettings.Name;
                 AgeEntry.Text = existingSettings.Age.ToString();
-
                 togTheme.IsToggled = existingSettings.lightOrDark;
-
                 var currentTheme = existingSettings.lightOrDark ? AppTheme.Dark : AppTheme.Light;
                 Application.Current.UserAppTheme = currentTheme;
             }
         }
-
 
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
@@ -58,7 +55,6 @@ namespace ROI_app
             if (parsingSuccess)
             {
                 bool theme = togTheme.IsToggled;
-
                 var userSettings = new UserSet
                 {
                     Name = name,
@@ -67,7 +63,6 @@ namespace ROI_app
                 };
 
                 _database.InsertOrReplaceAsync(userSettings);
-
                 // Show a confirmation message
                 DisplayAlert("Success", "User settings saved", "OK");
             }
@@ -77,7 +72,6 @@ namespace ROI_app
                 DisplayAlert("Error", "Invalid age input", "OK");
             }
         }
-
 
         private async void OnHomeButtonClicked(object sender, EventArgs e)
         {
@@ -90,34 +84,35 @@ namespace ROI_app
         {
             bool isDarkTheme = e.Value;
             Preferences.Set("DarkThemeOn", isDarkTheme ? "Dark" : "Light");
-
             // Apply the theme
             var currentTheme = isDarkTheme ? AppTheme.Dark : AppTheme.Light;
             Application.Current.UserAppTheme = currentTheme;
         }
 
+
+
+        //not working
         private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             double newValue = e.NewValue;
-            SetThemeBrightness(newValue);
+            //SetTheme(newValue);
         }
 
-
-        private static void SetThemeBrightness(double brightness)
+        private static void SetTheme(double brightness)
         {
             // Adjust the theme brightness here
-            Color lightThemeColor = Color.FromArgb("#FFFFFFFF");  // Light theme color (white)
-            Color darkThemeColor = Color.FromArgb("#FF000000");   // Dark theme color (black)
+            Color lightThemeColor = Color.FromHex("#FFFFFFFF");  // Light theme color (white)
+            Color darkThemeColor = Color.FromHex("#FF000000");   // Dark theme color (black)
 
             Color newThemeColor;
             if (brightness < 0.5)
             {
-                // Brightness is low, use dark theme color
+                // Brightness is low use dark theme
                 newThemeColor = darkThemeColor;
             }
             else
             {
-                // Brightness is high, use light theme color
+                // Brightness is high use light theme
                 newThemeColor = lightThemeColor;
             }
 
@@ -125,5 +120,26 @@ namespace ROI_app
             Application.Current.Resources["MyAppThemeColor"] = newThemeColor;
         }
 
+        private void ChangeBackgroundImage()
+        {
+            // Get the current theme
+            var currentTheme = Application.Current.RequestedTheme;
+
+            // Set the background image based on the theme
+            string imagePath;
+            /*if (currentTheme == AppTheme.Dark)
+            {
+                // Set the dark theme background image
+                imagePath = "black_texture_image.png";
+            }
+            else
+            {
+                // Set the light theme background image
+                imagePath = "burnt_orange_texture_image.png";
+            }*/
+
+            // Update the background image
+            //ImageBackground.Source = imagePath;
+            }
+        }
     }
-}
