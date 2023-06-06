@@ -4,11 +4,12 @@
              NavigationPage.HasNavigationBar="False">
     <Grid>
         <!-- Background image -->
+        <!-- Background image -->
         <Image
-            Source="burnt_orange_texture_image.png"
-            Aspect="AspectFill"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand" />
+                x:Name="BackgroundImage"
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
 
         <StackLayout>
             <!-- Header section with Home button and logo -->

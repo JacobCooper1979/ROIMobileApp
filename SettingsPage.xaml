@@ -7,10 +7,11 @@
         <Grid>
             <!-- Background image -->
             <Image
-            Source="burnt_orange_texture_image.png"
-            Aspect="AspectFill"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand" />
+                x:Name="BackgroundImage"
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand" />
+
 
             <StackLayout>
                 <!-- Header section with Home button and logo -->
@@ -81,8 +82,7 @@
                         <Label Grid.Column="1">ENTER YOUR AGE</Label>
                         <Entry Grid.Column="1" x:Name="AgeEntry"></Entry>
 
-                        <Label Grid.Column="2"></Label>
-                        <Slider x:Name="slider" Minimum="0" Maximum="1" ValueChanged="Slider_ValueChanged" />
+                        
 
 
 

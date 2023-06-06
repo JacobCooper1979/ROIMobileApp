@@ -9,8 +9,9 @@ namespace ROI_app
     public partial class SettingsPage : ContentPage
     {
         private SQLiteAsyncConnection _database;
+        public static event EventHandler<bool> ThemeChanged;
 
-        //Initialize settings page
+        // Initialize settings page
         public SettingsPage()
         {
             InitializeComponent();
@@ -39,15 +40,15 @@ namespace ROI_app
             var existingSettings = await _database.Table<UserSet>().FirstOrDefaultAsync();
             if (existingSettings != null)
             {
-                NameEntry.Text = existingSettings.Name;
-                AgeEntry.Text = existingSettings.Age.ToString();
+                NameEntry.Text = existingSettings.name;
+                AgeEntry.Text = existingSettings.age.ToString();
                 togTheme.IsToggled = existingSettings.lightOrDark;
                 var currentTheme = existingSettings.lightOrDark ? AppTheme.Dark : AppTheme.Light;
                 Application.Current.UserAppTheme = currentTheme;
             }
         }
 
-        private void SaveButton_Clicked(object sender, EventArgs e)
+        private async void SaveButton_Clicked(object sender, EventArgs e)
         {
             var name = NameEntry.Text;
             bool parsingSuccess = int.TryParse(AgeEntry.Text, out int age);
@@ -57,89 +58,67 @@ namespace ROI_app
                 bool theme = togTheme.IsToggled;
                 var userSettings = new UserSet
                 {
-                    Name = name,
-                    Age = age,
+                    name = name,
+                    age = age,
                     lightOrDark = theme
                 };
 
-                _database.InsertOrReplaceAsync(userSettings);
+                // Save user settings to the database
+                var existingSettings = await _database.Table<UserSet>().FirstOrDefaultAsync();
+                if (existingSettings != null)
+                {
+                    userSettings.id = existingSettings.id; // Set the ID to update existing settings
+                    await _database.UpdateAsync(userSettings);
+                }
+                else
+                {
+                    await _database.InsertAsync(userSettings);
+                }
+
                 // Show a confirmation message
-                DisplayAlert("Success", "User settings saved", "OK");
+                await DisplayAlert("Success", "User settings saved", "OK");
             }
             else
             {
-                // Age parsing failed, show an error message or handle the failure
-                DisplayAlert("Error", "Invalid age input", "OK");
+                // Show an error message
+                await DisplayAlert("Error", "Invalid age input", "OK");
             }
         }
 
         private async void OnHomeButtonClicked(object sender, EventArgs e)
         {
-            // Navigate back to the MainPage by popping to the root page
+            // Navigate back to the MainPage
             await Navigation.PopToRootAsync();
         }
 
-        // Sets to dark theme vs light theme
         private void OnThemeSwitchToggled(object sender, ToggledEventArgs e)
         {
             bool isDarkTheme = e.Value;
-            Preferences.Set("DarkThemeOn", isDarkTheme ? "Dark" : "Light");
-            // Apply the theme
-            var currentTheme = isDarkTheme ? AppTheme.Dark : AppTheme.Light;
-            Application.Current.UserAppTheme = currentTheme;
+
+            // Raise the ThemeChanged event
+            ThemeChanged?.Invoke(this, isDarkTheme);
+
+            // Update the background image based on the theme
+            ChangeBackgroundImage(isDarkTheme);
         }
 
-
-
-        //not working
-        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        private void ChangeBackgroundImage(bool isDarkTheme)
         {
-            double newValue = e.NewValue;
-            //SetTheme(newValue);
-        }
-
-        private static void SetTheme(double brightness)
-        {
-            // Adjust the theme brightness here
-            Color lightThemeColor = Color.FromHex("#FFFFFFFF");  // Light theme color (white)
-            Color darkThemeColor = Color.FromHex("#FF000000");   // Dark theme color (black)
-
-            Color newThemeColor;
-            if (brightness < 0.5)
-            {
-                // Brightness is low use dark theme
-                newThemeColor = darkThemeColor;
-            }
-            else
-            {
-                // Brightness is high use light theme
-                newThemeColor = lightThemeColor;
-            }
-
-            // Apply the new theme color to the app
-            Application.Current.Resources["MyAppThemeColor"] = newThemeColor;
-        }
-
-        private void ChangeBackgroundImage()
-        {
-            // Get the current theme
-            var currentTheme = Application.Current.RequestedTheme;
-
-            // Set the background image based on the theme
             string imagePath;
-            /*if (currentTheme == AppTheme.Dark)
+            if (isDarkTheme)
             {
-                // Set the dark theme background image
+                // Dark theme selected
                 imagePath = "black_texture_image.png";
             }
             else
             {
-                // Set the light theme background image
+                // Light theme selected
                 imagePath = "burnt_orange_texture_image.png";
-            }*/
-
-            // Update the background image
-            //ImageBackground.Source = imagePath;
             }
+
+            var imageSource = ImageSource.FromFile(imagePath);
+            BackgroundImage.Source = imageSource;
         }
     }
+}
+
