@@ -4,12 +4,11 @@
              NavigationPage.HasNavigationBar="False">
     <Grid>
         <!-- Background image -->
-        <!-- Background image -->
         <Image
-                x:Name="BackgroundImage"
-                Aspect="AspectFill"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand" />
+            x:Name="BackgroundImage"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" />
 
         <StackLayout>
             <!-- Header section with Home button and logo -->
@@ -20,12 +19,12 @@
                     x:Name="Home"
                     Text="HOME"
                     AutomationProperties.HelpText="Navigates back to the home button"
-                    BackgroundColor= "#941a1d"
+                    BackgroundColor="#941a1d"
                     TextColor="Black"
                     HeightRequest="110"
                     WidthRequest="150"
                     FontSize="30"
-                    Clicked="OnHomeButtonClicked"/>
+                    Clicked="OnHomeButtonClicked" />
 
                 <Image
                     Source="roi_logo.png"
@@ -59,57 +58,56 @@
                     x:Name="ViewEmployeesDetails"
                     Text="View Employees Details"
                     AutomationProperties.HelpText="Navigates to the View Employees Details page"
-                    BackgroundColor= "#941a1d"
+                    BackgroundColor="#941a1d"
                     TextColor="Black"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
                     HeightRequest="100"
-                    Clicked="OnViewEmployeesClicked"/>
+                    Clicked="OnViewEmployeesClicked" />
 
                 <!-- Update Employees button -->
                 <Button
                     x:Name="UpdateEmployees"
                     Text="Update Employees"
                     AutomationProperties.HelpText="Navigates to the Update Employees page"
-                    BackgroundColor= "#941a1d"
+                    BackgroundColor="#941a1d"
                     TextColor="Black"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
                     HeightRequest="100"
-                    Clicked="OnUpdateEmployeesClicked"/>
+                    Clicked="OnUpdateEmployeesClicked" />
 
                 <!-- Delete Button -->
                 <Button
                     x:Name="RemoveEmployee"
                     Text="Remove Employee"
                     AutomationProperties.HelpText="Navigates you to the delete page"
-                    BackgroundColor= "#941a1d"
+                    BackgroundColor="#941a1d"
                     TextColor="Black"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
                     HeightRequest="100"
-                    Clicked="OnRemoveEmployeesClicked"/>
+                    Clicked="OnRemoveEmployeesClicked" />
 
                 <!-- Settings page button -->
                 <Button
                     x:Name="SettingsPage"
                     Text="Settings Page"
                     AutomationProperties.HelpText="Navigates you to the Settings Page"
-                    BackgroundColor= "#941a1d"
+                    BackgroundColor="#941a1d"
                     TextColor="Black"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
                     HeightRequest="100"
-                    Clicked="OnSettingsPageClicked"/>
-
+                    Clicked="OnSettingsPageClicked" />
 
             </StackLayout>
 

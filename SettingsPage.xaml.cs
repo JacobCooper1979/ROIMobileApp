@@ -109,16 +109,19 @@ namespace ROI_app
             {
                 // Dark theme selected
                 imagePath = "black_texture_image.png";
+                
             }
             else
             {
                 // Light theme selected
                 imagePath = "burnt_orange_texture_image.png";
+
             }
 
             var imageSource = ImageSource.FromFile(imagePath);
             BackgroundImage.Source = imageSource;
         }
+
     }
 }
 
