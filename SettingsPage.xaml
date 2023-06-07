@@ -7,7 +7,7 @@
         <Grid>
             <!-- Background image -->
             <Image
-                x:Name="BackgroundImage"
+                x:Name="SettingsBackgroundImage"
                 Aspect="AspectFill"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand" />
