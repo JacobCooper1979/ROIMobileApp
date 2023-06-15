@@ -31,7 +31,7 @@ namespace ROI_app
 
         public EmployeeDbContext()
         {
-            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "employees.db");
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "employee.db");
 
             // Check if the database file already exists
             if (!File.Exists(databasePath))
@@ -86,6 +86,12 @@ namespace ROI_app
         public EmployeeRepository()
         {
             _context = new EmployeeDbContext();
+            StartUp();
+        }
+
+        public async void StartUp()
+        {
+            await _context.InitializeDatabaseAsync();
         }
 
         public async Task<List<Employee>> GetEmployeesAsync()

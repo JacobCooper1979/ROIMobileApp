@@ -59,7 +59,7 @@ namespace ROI_app
         private async void LoadEmployees()
         {
             // Clear existing employees
-            Employees.Clear();
+            //Employees.Clear();
 
             // Loads employees from the EmployeeRepository
             EmployeeRepository employeeRepository = new EmployeeRepository();
