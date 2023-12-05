@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace ROIMobileApp;
+namespace ROI_app;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

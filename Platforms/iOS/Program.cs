@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace ROIMobileApp;
+namespace ROI_app;
 
 public class Program
 {
