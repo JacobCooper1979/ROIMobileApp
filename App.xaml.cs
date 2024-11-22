@@ -18,6 +18,5 @@ public partial class App : Application
     private void InitializeDatabase()
     {
         EmployeeDbContext dbContext = new EmployeeDbContext();
-        
     }
 }

@@ -19,7 +19,7 @@
                     x:Name="Home"
                     Text="HOME"
                     AutomationProperties.HelpText="Navigates back to the home button"
-                    BackgroundColor= "#941a1d"
+                    BackgroundColor="#941a1d"
                     TextColor="Black"
                     HeightRequest="110"
                     WidthRequest="150"
@@ -35,14 +35,13 @@
                     VerticalOptions="Start"
                     HorizontalOptions="End"
                     Grid.Row="0" />
-
             </StackLayout>
 
             <!-- Welcome label -->
             <Label
                 Text="Please enter the employees First Name, Last Name and employees ID"
                 FontSize="30"
-                BackgroundColor= "#941a1d"
+                BackgroundColor="#941a1d"
                 TextColor="Black"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
@@ -102,15 +101,14 @@
 
             <!--Delete button-->
             <Button
-                    x:Name="UpdateButton"
-                    Text="Update Employee"
-                    AutomationProperties.HelpText="This adds a new employee"
-                    BackgroundColor= "#941a1d"
-                    TextColor="Black"
-                    HeightRequest="110"
-                    WidthRequest="150"
-                    FontSize="30"/>
-
+                x:Name="UpdateButton"
+                Text="Update Employee"
+                AutomationProperties.HelpText="This adds a new employee"
+                BackgroundColor="#941a1d"
+                TextColor="Black"
+                HeightRequest="110"
+                WidthRequest="150"
+                FontSize="30"/>
         </StackLayout>
     </Grid>
 </ContentPage>

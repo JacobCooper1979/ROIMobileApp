@@ -5,7 +5,7 @@ using SQLite;
 
 namespace ROI_app
 {
-    // UpdateEmployees content page
+    // Represents the UpdateEmployees content page
     public partial class UpdateEmployees : ContentPage
     {
         private EmployeeRepository _employeeRepository;
@@ -63,7 +63,7 @@ namespace ROI_app
         private async Task ProcessEmployeeData(Employee employee)
         {
             // Save or update the employee record in the database
-            await  _employeeRepository.SaveEmployeeAsync(employee);
+            await _employeeRepository.SaveEmployeeAsync(employee);
         }
     }
 }
