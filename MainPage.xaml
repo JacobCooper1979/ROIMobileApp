@@ -1,4 +1,4 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ROI_app.MainPage"
              NavigationPage.HasNavigationBar="False">
@@ -19,12 +19,12 @@
                     x:Name="Home"
                     Text="HOME"
                     AutomationProperties.HelpText="Navigates back to the home button"
-                    BackgroundColor="Red"
+                    BackgroundColor="#941a1d"
+                    TextColor="Black"
                     HeightRequest="110"
                     WidthRequest="150"
                     FontSize="30"
-                    Clicked="OnHomeButtonClicked"/>
-                <!-- Event handler for the Home button click -->
+                    Clicked="OnHomeButtonClicked" />
 
                 <Image
                     Source="roi_logo.png"
@@ -35,14 +35,13 @@
                     VerticalOptions="Start"
                     HorizontalOptions="End"
                     Grid.Row="0" />
-
             </StackLayout>
 
             <!-- Welcome label -->
             <Label
                 Text="Welcome to ROI application. Please select an option."
                 FontSize="30"
-                TextColor="White"
+                TextColor="Black"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 HorizontalTextAlignment="Center" />
@@ -58,41 +57,43 @@
                     x:Name="ViewEmployeesDetails"
                     Text="View Employees Details"
                     AutomationProperties.HelpText="Navigates to the View Employees Details page"
-                    BackgroundColor="Red"
+                    BackgroundColor="#941a1d"
+                    TextColor="Black"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
-                    HeightRequest="100"/>
+                    HeightRequest="100"
+                    Clicked="OnViewEmployeesClicked" />
 
                 <!-- Update Employees button -->
                 <Button
                     x:Name="UpdateEmployees"
                     Text="Update Employees"
                     AutomationProperties.HelpText="Navigates to the Update Employees page"
-                    BackgroundColor="Red"
+                    BackgroundColor="#941a1d"
+                    TextColor="Black"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
                     HeightRequest="100"
-                    Clicked="OnUpdateEmployeesClicked"/>
-                <!-- Event handler for the Update Employees button click -->
+                    Clicked="OnUpdateEmployeesClicked" />
 
                 <!-- Delete Button -->
                 <Button
-                    x:Name="DeleteButton"
-                    Text="Delete Button"
+                    x:Name="RemoveEmployee"
+                    Text="Remove Employee"
                     AutomationProperties.HelpText="Navigates you to the delete page"
-                    BackgroundColor="Red"
+                    BackgroundColor="#941a1d"
+                    TextColor="Black"
                     HorizontalOptions="Center"
                     Margin="10"
                     FontSize="30"
                     WidthRequest="300"
-                    HeightRequest="100"/>
-
+                    HeightRequest="100"
+                    Clicked="OnRemoveEmployeesClicked" />
             </StackLayout>
-
         </StackLayout>
     </Grid>
 </ContentPage>

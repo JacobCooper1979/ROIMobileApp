@@ -1,0 +1,125 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ROI_app.ViewEmployees"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <!-- Background image -->
+        <Image
+            Source="brand_pattern_1.png"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" />
+
+        <StackLayout>
+            <!-- Header section with Home button and logo -->
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10">
+                <Button
+                    x:Name="Home"
+                    Text="HOME"
+                    AutomationProperties.HelpText="Navigates back to the home button"
+                    BackgroundColor="#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"
+                    Clicked="OnHomeButtonClicked"/>
+                <!-- Event handler for the Home button click -->
+
+                <Image
+                    Source="roi_logo.png"
+                    AutomationProperties.Name="ROI logo"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    Margin="10, 0, 20, 0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Grid.Row="0" />
+
+            </StackLayout>
+
+            <!-- Welcome label -->
+            <Label
+                Text="Employee View Page"
+                FontSize="30"
+                BackgroundColor="#941a1d"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center" />
+
+            <!-- Table-like layout for employees -->
+            <Grid Margin="20" BackgroundColor="#941a1d">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Table headers -->
+                <Label Text="Image" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <BoxView Grid.Row="0" Grid.Column="1" Grid.RowSpan="7" BackgroundColor="Black" />
+                <Label Text="ID" Grid.Row="0" Grid.Column="2" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <BoxView Grid.Row="0" Grid.Column="3" Grid.RowSpan="7" BackgroundColor="Black" />
+                <Label Text="FirstName" Grid.Row="0" Grid.Column="4" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <BoxView Grid.Row="0" Grid.Column="5" Grid.RowSpan="7" BackgroundColor="Black" />
+                <Label Text="LastName" Grid.Row="0" Grid.Column="6" BackgroundColor="#941a1d" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                <!-- Horizontal line -->
+                <BoxView Grid.Row="1" Grid.ColumnSpan="7" BackgroundColor="Black" />
+
+                <!-- Employee data -->
+                <ListView ItemsSource="{Binding ShowEmployees}" Grid.Row="2" Grid.ColumnSpan="7">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding Image}" Grid.Column="0" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" />
+                                    <Label Text="{Binding ID}" Grid.Column="2" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding FirstName}" Grid.Column="4" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding LastName}" Grid.Column="6" BackgroundColor="#941a1d" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <!--Delete button-->
+            <Button
+                x:Name="Refresh"
+                Text="Refresh"
+                AutomationProperties.HelpText="refresh the table of employees"
+                BackgroundColor="#941a1d"
+                TextColor="Black"
+                HeightRequest="110"
+                WidthRequest="150"
+                FontSize="30"
+                Clicked="OnRefreshButtonClicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

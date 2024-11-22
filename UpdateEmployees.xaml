@@ -3,34 +3,112 @@
              x:Class="ROI_app.UpdateEmployees"
              NavigationPage.HasNavigationBar="False">
     <Grid>
+        <!-- Background image -->
         <Image
-            Source="burnt_orange_texture_image.png"
+            Source="brand_pattern_1.png"
             Aspect="AspectFill"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" />
 
         <StackLayout>
-            <!-- Home Button -->
+            <!-- Header section with Home button and logo -->
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10">
+                <Button
+                    x:Name="Home"
+                    Text="HOME"
+                    AutomationProperties.HelpText="Navigates back to the home button"
+                    BackgroundColor="#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"
+                    Clicked="OnHomeButtonClicked"/>
+
+                <Image
+                    Source="roi_logo.png"
+                    AutomationProperties.Name="ROI logo"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    Margin="10, 0, 20, 0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Grid.Row="0" />
+            </StackLayout>
+
+            <!-- Welcome label -->
+            <Label
+                Text="Please enter the employees First Name, Last Name and employees ID"
+                FontSize="30"
+                BackgroundColor="#941a1d"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center" />
+
+            <!-- Users txt for employee ID -->
+            <Entry
+                x:Name="FirstName"
+                Placeholder="First Name: "
+                Margin="20"
+                FontSize="20">
+                <Entry.Resources>
+                    <Style TargetType="Entry">
+                        <Setter Property="BackgroundColor" Value="#941a1d" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="PlaceholderColor" Value="black" />
+                        <Setter Property="HeightRequest" Value="45" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="FontAttributes" Value="Bold" />
+                    </Style>
+                </Entry.Resources>
+            </Entry>
+
+            <Entry
+                x:Name="LastName"
+                Placeholder="Last Name: "
+                Margin="20"
+                FontSize="20">
+                <Entry.Resources>
+                    <Style TargetType="Entry">
+                        <Setter Property="BackgroundColor" Value="#941a1d" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="PlaceholderColor" Value="black" />
+                        <Setter Property="HeightRequest" Value="45" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="FontAttributes" Value="Bold" />
+                    </Style>
+                </Entry.Resources>
+            </Entry>
+
+            <Entry
+                x:Name="EmployeeID"
+                Placeholder="Employee ID: "
+                Margin="20"
+                FontSize="20">
+                <Entry.Resources>
+                    <Style TargetType="Entry">
+                        <Setter Property="BackgroundColor" Value="#941a1d" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="PlaceholderColor" Value="black" />
+                        <Setter Property="HeightRequest" Value="45" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="FontAttributes" Value="Bold" />
+                    </Style>
+                </Entry.Resources>
+            </Entry>
+
+            <!--Delete button-->
             <Button
-                x:Name="Home"
-                Text="HOME"
-                AutomationProperties.HelpText="Navigates back to the home button"
-                BackgroundColor="Red"
+                x:Name="UpdateButton"
+                Text="Update Employee"
+                AutomationProperties.HelpText="This adds a new employee"
+                BackgroundColor="#941a1d"
+                TextColor="Black"
                 HeightRequest="110"
                 WidthRequest="150"
-                FontSize="30"
-                Clicked="OnHomeButtonClicked"/>
-
-            <!-- ROI Logo -->
-            <Image
-                Source="roi_logo.png"
-                AutomationProperties.Name="ROI logo"
-                HeightRequest="200"
-                WidthRequest="200"
-                Margin="10, 0, 20, 0"
-                VerticalOptions="Start"
-                HorizontalOptions="End"
-                Grid.Row="0" />
+                FontSize="30"/>
         </StackLayout>
     </Grid>
 </ContentPage>

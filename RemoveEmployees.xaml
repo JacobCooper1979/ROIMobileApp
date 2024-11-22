@@ -1,0 +1,79 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ROI_app.RemoveEmployees"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <!-- Background image -->
+        <Image
+            Source="black_texture_image.png"
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" />
+
+        <StackLayout>
+            <!-- Header section with Home button and logo -->
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="10">
+                <Button
+                    x:Name="Home"
+                    Text="HOME"
+                    AutomationProperties.HelpText="Navigates back to the home button"
+                    BackgroundColor= "#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"
+                    Clicked="OnHomeButtonClicked"/>
+                <!-- Event handler for the Home button click -->
+
+                <Image
+                    Source="roi_logo.png"
+                    AutomationProperties.Name="ROI logo"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    Margin="10, 0, 20, 0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    Grid.Row="0" />
+
+            </StackLayout>
+
+            <!-- Welcome label -->
+            <Label
+                Text="Please enter the Employees ID you want to Remove"
+                FontSize="30"
+                BackgroundColor= "#941a1d"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center" />
+
+
+            <!-- Users txt for employee ID -->
+            <Entry
+                x:Name="TextInput"
+                Placeholder="Employees ID: "
+                Margin="20"
+                FontSize="20" />
+
+
+            <!--Delete button-->
+            <Button
+                    x:Name="DeleteButton"
+                    Text="Delete Button"
+                    AutomationProperties.HelpText="Deletes the employee"
+                    BackgroundColor= "#941a1d"
+                    TextColor="Black"
+                    HeightRequest="110"
+                    WidthRequest="150"
+                    FontSize="30"
+                    Clicked="OnDeleteButtonClicked"/>
+            
+
+
+
+
+        </StackLayout>
+    </Grid>
+</ContentPage>
